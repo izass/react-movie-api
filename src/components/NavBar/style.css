@@ -60,7 +60,7 @@ form > button {
     color: black;
 }
 
-a {
+.nav-container a {
     cursor: pointer;
     color: white;
     text-decoration: none;

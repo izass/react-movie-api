@@ -1,5 +1,40 @@
-.porra {
-    max-width: 800px;
-    margin: 20px auto 0;
+.movie-content {
+    margin: 0 200px 0;
     padding: 0 20px;
+    flex-direction: column
+}
+
+.square-poster {
+    width: 30%;    
+    float: left;
+    margin: 1.66%;
+}
+
+.square-poster img > {
+    width: 100%;
+}
+
+.square-info {
+    width: 60%;
+    padding-bottom: 16%;
+    float: left;
+    margin: 1.66%;
+}
+
+.square-info > h1, p, h2, h3, a {
+    padding: 10px;
+}
+
+.square-info > a {
+    color: aqua;
+}
+
+.trailer {
+    margin: 1.66%;
+}
+
+.trailer > div {
+    justify-content: center;
+    align-items: center;
+    display: flex;
 }

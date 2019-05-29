@@ -69,25 +69,40 @@ export default class Movie extends Component {
         //this.catchYear();
 
         return (
-            <div className="porra">
-                <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
-                <h1>{movie.title}</h1>  
-                <h3>{year} Dirigido por {director}</h3>   
-                <p>{movie.overview}</p> 
-                <h3>Elenco</h3>
-                <p>{cast}</p>
-                <h3>Genero</h3>
-                <p>{genre}</p>
-                <p>{movie.runtime} min</p>
-                <h3>Mais informações</h3>         
-                <a href={"https://www.imdb.com/title/"+movie.imdb_id}>
-                https://www.imdb.com/title/{movie.imdb_id}
-                </a>                
-                <YouTube                            
-                    videoId={trailer}                        
-                    onReady={this._onReady}
-                />
-            </div>
+            <div className="movie-content">
+                <div> 
+                    <div className="square-poster poster">
+                        <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
+                    </div>
+                    <div className="square-info">
+
+                    
+                    
+                        <h1>{movie.title}</h1>  
+                        <h3>{year} Dirigido por {director}</h3>   
+                        <p>{movie.overview}</p> 
+                        <h3>Elenco</h3>
+                        <p>{cast}</p>
+                        <h3>Genero</h3>
+                        <p>{genre}</p>
+                        <p>{movie.runtime} min</p>
+                        <h3>Mais informações</h3>         
+                        <a href={"https://www.imdb.com/title/"+movie.imdb_id} target="_blank">
+                        https://www.imdb.com/title/{movie.imdb_id}
+                        </a>                
+                    </div>
+                </div>
+                <div className="trailer">                    
+                    <h2>Trailer</h2>
+                    <hr></hr>
+                    <div>
+                        <YouTube                            
+                            videoId={trailer}                        
+                            onReady={this._onReady}
+                        />
+                    </div>                
+                </div>     
+            </div>            
         );
     }
 }
