@@ -34,7 +34,7 @@ class NavBar extends Component {
                         <li><Link to="/">Home</Link></li>                                    
                     </div>
                     <div className="center-nav">
-                        <form style={{display:"inline", verticalAlign:"middle", position:"relative"}} onSubmit={this.handleSubmit}> 
+                        <form onSubmit={this.handleSubmit}> 
                             <input
                                 type="text"
                                 placeholder="search"
