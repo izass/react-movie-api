@@ -71,13 +71,12 @@ export default class Movie extends Component {
         return (
             <div className="movie-content">
                 <div> 
-                    <div className="square-poster poster">
-                        <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
+                    <div className="square-poster">
+                        <div className="poster">
+                            <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
+                        </div>
                     </div>
-                    <div className="square-info">
-
-                    
-                    
+                    <div className="square-info">         
                         <h1>{movie.title}</h1>  
                         <h3>{year} Dirigido por {director}</h3>   
                         <p>{movie.overview}</p> 
