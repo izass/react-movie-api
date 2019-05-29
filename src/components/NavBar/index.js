@@ -45,7 +45,7 @@ class NavBar extends Component {
                         </form>                    
                     </div>
                     <div className="right-nav">
-                        <li><Link to="/">Filmes</Link></li>                         
+                        <li><Link to="/">Filmes</Link></li>   
                     </div>
                 </div>            
             </header>
