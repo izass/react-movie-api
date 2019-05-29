@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import apiQuery from '../../services/apiQuery';
-import { Link } from 'react-router-dom'
 import './style.css'
+import Grid from '../../components/Grid'
 
 export default class Search extends Component {
     
@@ -27,20 +27,7 @@ export default class Search extends Component {
 
         return (
             <div class="search-container">
-                <div style={{flexWrap:"wrap", display:"flex"}}>
-                {movieList.map(movie => (
-                        <div className="s">
-                            <Link 
-                                className="p"
-                                to={`/movies/${movie.id}`}
-                                style={{textDecoration:"none"}}
-                            >
-                                <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
-                                <h2 key={movie.id}>{movie.title}</h2>
-                            </Link>                            
-                        </div>
-                    ))}        
-                </div>                
+                <Grid list={movieList}/>                
             </div>
         );
     }

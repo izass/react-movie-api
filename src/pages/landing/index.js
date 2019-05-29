@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import api from '../../services/api'
 import './style.css'
-import { Link } from 'react-router-dom'
+import Grid from '../../components/Grid'
 
 export default class Landing extends Component {
     
@@ -39,20 +39,7 @@ export default class Landing extends Component {
                 <header>
                     <h1>Landing Page</h1>                    
                 </header>
-                <div>
-                    {data.map(movie => (
-                        <div className="square">
-                            <Link 
-                                className="poster"
-                                to={`/movies/${movie.id}`}
-                                style={{textDecoration:"none"}}
-                            >
-                                <img src={"https://image.tmdb.org/t/p/w500/"+movie.poster_path}/>
-                                <h2 key={movie.id}>{movie.title}</h2>
-                            </Link>                            
-                        </div>
-                    ))}                                                              
-                </div>                 
+                <Grid list={data}/>                    
             </div>
         );
     }
