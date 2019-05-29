@@ -1,0 +1,54 @@
+.landing-container {
+    margin: 0 300px;
+    /* display: flex; */
+    height: 100%;
+}
+
+header {
+    background-image: url(./images/avengers-infinity-war3.jpg); 
+    width: 1200px;
+    height: 675px;
+    display: block;
+    /* justify-content: center;
+    align-items: center;
+    display: flex; */
+}
+
+header > h1 {
+    justify-content: center;
+    /* align-items: center; */
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 600px;
+}
+
+.square {
+    width: 30%;
+    /* background: black; */
+    /* border: 2px dashed white; */
+    /* padding-bottom: 30%; */
+    float: left;
+    margin: 1.66%;
+    /* border-radius: 30%; */    
+}
+
+.poster > h2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.poster > img {    
+    width: 100%;
+}
+
+.poster {
+    display: block;
+    padding: 4px;
+    /* margin-bottom: 20px; */
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: black;    
+}

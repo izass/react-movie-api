@@ -1,0 +1,37 @@
+.s {
+    width: 30%;
+    /* background: black; */
+    /* border: 2px dashed white; */
+    /* padding-bottom: 30%; */
+    float: left;
+    margin: 1.66%;
+    /* border-radius: 30%; */ 
+}
+
+.p > h2 {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    color: pink;
+}
+
+.p > img {    
+    width: 100%;
+}
+
+.p {
+    display: block;
+    padding: 4px;
+    /* margin-bottom: 20px; */
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    color: black;  
+}
+
+.search-container {
+    margin: 0 300px;
+    /* display: flex; */
+    height: 100%;
+    
+}
