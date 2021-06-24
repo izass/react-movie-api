@@ -7,9 +7,9 @@ import {
   useHistory
 } from 'react-router-dom'
 
-import Landing from './pages/landing'
-import Movie from './pages/movie'
-import Search from './pages/search';
+import Landing from './pages/Landing'
+import MovieDetails from './pages/MovieDetails'
+import SearchResults from './pages/SearchResults';
 import NavBar from './components/NavBar';
 
 import './styles.css'
@@ -22,8 +22,8 @@ function App() {
       <Route path="/" component={NavBar}/>
       <Switch history={history}>
         <Route exact path="/" component={Landing}/>
-        <Route path="/movies/:id" component={Movie}/>
-        <Route path="/search/:query" component={Search}/>
+        <Route path="/movies/:id" component={MovieDetails}/>
+        <Route path="/search/:query" component={SearchResults}/>
       </Switch>
     </Router>
   );
