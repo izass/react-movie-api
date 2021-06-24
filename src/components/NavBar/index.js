@@ -1,56 +1,44 @@
-import React, { Component } from 'react'
-import './style.css'
- import { withRouter, Link } from 'react-router-dom'
+import React, { useState } from 'react'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
-class NavBar extends Component {
+import { NavContainer, Nav, InputSearch, SearchButton } from './styles.js'
 
-    state = {
-        movieSearch: "",
+const NavBar = (props) => {
+  const [search, setSearch] = useState("")
+
+  function handleChange(event) {
+    setSearch(event.target.value);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    if (search === "") {
+      return
+    } else {
+      setSearch("");
+      props.history.push(`/search/${search}`);
+      //this is a gambiarra! Correct with didUpdate on results page
+      document.location.reload();
     }
+  }
 
-    handleChange = event => {
-        console.log(event.target.value);
-        this.setState({ movieSearch: event.target.value });
-    }    
-
-    handleSubmit = event => {
-        event.preventDefault();
-        if(this.state.movieSearch==="") {
-            return
-        }else {
-            this.props.history.push(`/search/${this.state.movieSearch}`);
-            document.location.reload(true);
-        }
-        
-    }
-    
-    render() {
-        return (
-            <header className="main-nav">
-                <div className="nav-container">
-                    <div className="left-nav">
-                        <li><Link to="/">Home</Link></li>                                    
-                    </div>
-                    <div className="center-nav">
-                        <form onSubmit={this.handleSubmit}> 
-                            <input
-                                type="text"
-                                placeholder="search"
-                                value={this.state.movieSearch}
-                                onChange={this.handleChange}
-                            />
-                            <button><FontAwesomeIcon icon={faSearch}/></button>  
-                        </form>                    
-                    </div>
-                    <div className="right-nav">
-                        <li><Link to="/">Filmes</Link></li>   
-                    </div>
-                </div>            
-            </header>
-        );
-    }   
+  return (
+    <NavContainer>
+      <Nav to="/">Home</Nav>
+      <form onSubmit={handleSubmit}>
+        <InputSearch
+          type="text"
+          placeholder="search"
+          value={search}
+          onChange={handleChange}
+        />
+        <SearchButton type="submit"><FontAwesomeIcon icon={faSearch} /></SearchButton>
+      </form>
+      <Nav to="/">Filmes</Nav>
+    </NavContainer>
+  )
 }
 
-export default withRouter(NavBar);
+export default NavBar;
