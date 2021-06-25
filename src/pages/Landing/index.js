@@ -1,46 +1,44 @@
-import React, { Component } from 'react'
-import api from '../../services/api'
-import './style.css'
-import Grid from '../../components/Grid'
+import React, { useEffect, useState } from "react";
 
-export default class Landing extends Component {
-    
-    state = {
-        movieMap: [
-            105,//"back+to+the+future            
-            82695,//"les+misérables"
-            299536,//"avengers+infinity+war"
-            68718,//"django+unchained"
-            27205,//"inception
-            670,//"oldboy"
-        ],
-        data: []
-    }
+import Grid from "../../components/Grid";
+import api from "../../services/api";
 
-    getData = async () => {
-        var movieList = [];
-        for(var i=0; i<this.state.movieMap.length; i++) {
-            const response = await api.get(`${this.state.movieMap[i]}?api_key=344db5c6830b31f30c9a1b6ba00bde07`);  
-            movieList.push(response.data);            
-        }        
-        this.setState({data:movieList});        
-    }
+import { Container, HeaderPoster } from "./styles.js";
 
-    componentDidMount() {
-        this.getData();          
-    }
-    
-    render() {
+function Landing(props) {
+  const [movies, setMovies] = useState([])
+  const [movieMap, setMovieMap] = useState([
+    105, //"back+to+the+future
+    82695, //"les+misérables"
+    299536, //"avengers+infinity+war"
+    68718, //"django+unchained"
+    27205, //"inception
+    670, //"oldboy"
+  ])
 
-        const { data } = this.state;
-
-        return (
-            <div className="landing-container">
-                <header>
-                    <h1>Landing Page</h1>                    
-                </header>
-                <Grid list={data}/>                    
-            </div>
+  useEffect(() => {
+    async function fetchData () {
+      let movieList = [];
+      for (var i = 0; i < movieMap.length; i++) {
+        const response = await api.get(
+          `${movieMap[i]}?api_key=344db5c6830b31f30c9a1b6ba00bde07`
         );
-    }
+        movieList.push(response.data);
+      }
+      setMovies(movieList);
+    };
+
+    fetchData()
+  }, [movieMap])
+
+  return (
+    <Container>
+      <HeaderPoster>
+        <h1>Landing Page</h1>
+      </HeaderPoster>
+      <Grid list={movies} />
+    </Container>
+  )
 }
+
+export default Landing
