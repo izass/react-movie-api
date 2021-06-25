@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 
 import Grid from "../../components/Grid";
-import api from "../../services/api";
+import { getMovie } from "../../services/api";
 
 import { Container, HeaderPoster } from "./styles.js";
 
 function Landing(props) {
   const [movies, setMovies] = useState([])
-  const [movieMap, setMovieMap] = useState([
+  const [moviesId, setMoviesId] = useState([
     105, //"back+to+the+future
     82695, //"les+misérables"
     299536, //"avengers+infinity+war"
@@ -19,17 +19,15 @@ function Landing(props) {
   useEffect(() => {
     async function fetchData () {
       let movieList = [];
-      for (var i = 0; i < movieMap.length; i++) {
-        const response = await api.get(
-          `${movieMap[i]}?api_key=API_KEY;`
-        );
-        movieList.push(response.data);
+      for (var i = 0; i < moviesId.length; i++) {
+        const response = await getMovie(moviesId[i])
+        movieList.push(response);
       }
       setMovies(movieList);
     };
 
     fetchData()
-  }, [movieMap])
+  }, [moviesId])
 
   return (
     <Container>
