@@ -22,8 +22,18 @@ const api = axios.create({
   }
  }
 
+ async function getMovieDetails(id) {
+  try {
+    const response = await api.get(`movie/${id}?api_key=API_KEY;&append_to_response=videos,credits`)
+    return response.data
+  } catch (error) {
+    return error
+  }
+ }
+
  export {
    searchMovies,
-   getMovie
+   getMovie,
+   getMovieDetails
  };
 
