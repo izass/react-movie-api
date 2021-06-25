@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-// import "./style.css";
-
-import apiQuery from "../../services/apiQuery";
+import { searchMovies } from "../../services/api";
 import Grid from "../../components/Grid";
 
 import { Container } from "./styles.js";
@@ -13,8 +11,8 @@ function SearchResults(props) {
   useEffect(() => {
     async function fetchData() {
       const { query } = props.match.params;
-      const response = await apiQuery.get(query);
-      setMovies(response.data.results);
+      const response = await searchMovies(query);
+      setMovies(response);
     };
 
     fetchData()
