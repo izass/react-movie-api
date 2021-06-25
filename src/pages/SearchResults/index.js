@@ -1,34 +1,30 @@
-import React, { Component } from 'react'
-import apiQuery from '../../services/apiQuery';
-import './style.css'
-import Grid from '../../components/Grid'
+import React, { useEffect, useState } from "react";
 
-export default class Search extends Component {
-    
-    state = {
-        movieList: [],
-    }
+// import "./style.css";
 
-    async componentDidMount() {
-        this.getData();
-    }
+import apiQuery from "../../services/apiQuery";
+import Grid from "../../components/Grid";
 
-    getData = async () => {
-        const { query } = this.props.match.params;
-        const response = await apiQuery.get(query);
-        console.log(response.data);
-        this.setState({movieList:response.data.results});
-    }
+import { Container } from "./styles.js";
 
-    render() { 
-        
-        const { movieList } = this.state;
-        //this.getData();
+function SearchResults(props) {
+  const [movies, setMovies] = useState([])
 
-        return (
-            <div class="search-container">
-                <Grid list={movieList}/>                
-            </div>
-        );
-    }
+  useEffect(() => {
+    async function fetchData() {
+      const { query } = props.match.params;
+      const response = await apiQuery.get(query);
+      setMovies(response.data.results);
+    };
+
+    fetchData()
+  }, [props.match.params])
+
+  return (
+    <Container>
+      <Grid list={movies} />
+    </Container>
+  );
 }
+
+export default SearchResults

@@ -18,9 +18,7 @@ const NavBar = (props) => {
       return
     } else {
       props.history.push(`/search/${search}`);
-      //this is a gambiarra! Correct with didUpdate on results page
       setSearch("");
-      document.location.reload();
     }
   }
 
