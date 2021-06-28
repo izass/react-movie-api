@@ -9,8 +9,9 @@ import {
 
 import Landing from './pages/Landing'
 import MovieDetails from './pages/MovieDetails'
-import SearchResults from './pages/SearchResults';
-import NavBar from './components/NavBar';
+import SearchResults from './pages/SearchResults'
+import NavBar from './components/NavBar'
+import NotFound from './components/NotFound'
 
 import './styles.css'
 
@@ -24,6 +25,7 @@ function App() {
         <Route exact path="/" component={Landing}/>
         <Route path="/movies/:id" component={MovieDetails}/>
         <Route path="/search/:query" component={SearchResults}/>
+        <Route path="*" component={NotFound} />
       </Switch>
     </Router>
   );
