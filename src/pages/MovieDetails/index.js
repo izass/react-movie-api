@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { getMovieDetails } from "../../services/api";
+
 import YouTube from "react-youtube";
+
+import { getMovieDetails } from "../../services/api";
+import LoadingPage from '../../components/LoadingPage'
 
 import {
   Container,
@@ -9,14 +12,22 @@ import {
   TrailerSection,
 } from "./styles.js";
 
+
 function MovieDetails(props) {
-  const [movie, setMovie] = useState(null)
+  const [movie, setMovie] = useState({})
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     async function fetchData() {
       const { id } = props.match.params
-      const response = await getMovieDetails(id)
-      setMovie(response)
+      try {
+        const response = await getMovieDetails(id)
+        setMovie(response)
+        setLoading(false)
+      } catch (error) {
+        console.log(error)
+        setLoading(false)
+      }
     }
 
     fetchData()
@@ -43,8 +54,10 @@ function MovieDetails(props) {
     return direction.map(director => { return director.name }).join(", ")
   }
 
-  if (!movie) {
-    return <h1>loading...</h1>
+  if (loading) {
+    return (
+     <LoadingPage />
+    )
   }
 
   return (
