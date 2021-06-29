@@ -94,7 +94,7 @@ function MovieDetails(props) {
         <h2>Trailer</h2>
         <hr></hr>
         <div>
-          <YouTube videoId={movie.videos.results[0].key} />
+          <YouTube videoId={movie.videos.results.lenghth > 0 ? movie.videos.results[0].key : ""} />
         </div>
       </TrailerSection>
     </Container>
