@@ -4,12 +4,13 @@ import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  margin-top: 1rem;
+  align-items: center;
 `
 export const Square = styled.div`
-  width: 30%;
-  margin: 0 1.66% 1.66% 0;
+  width: 25%;
+  margin: 1.5rem 2.66%;
 `
 export const Poster = styled(Link)`
   display: block;
@@ -19,7 +20,6 @@ export const Poster = styled(Link)`
   border: 1px solid #ddd;
 
   background-color: #fff;
-  color: #000;
 
   img {
     width: 100%;

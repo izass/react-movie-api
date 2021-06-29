@@ -32,7 +32,9 @@ function Landing(props) {
   return (
     <Container>
       <HeaderPoster>
-        <h1>Landing Page</h1>
+        <div className="gradient">
+          <h1>Landing Page</h1>
+        </div>
       </HeaderPoster>
       <Grid list={movies} />
     </Container>
