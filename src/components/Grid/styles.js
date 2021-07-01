@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 
 import { Link } from 'react-router-dom'
+import { device } from '../../globalStyles'
 
 export const Container = styled.div`
   display: flex;
@@ -11,6 +12,11 @@ export const Container = styled.div`
 export const Square = styled.div`
   width: 25%;
   margin: 1.5rem 2.66%;
+
+  @media ${device.mobile} {
+    width: 45%;
+    margin: 0.5rem;
+  }
 `
 export const Poster = styled(Link)`
   display: block;
