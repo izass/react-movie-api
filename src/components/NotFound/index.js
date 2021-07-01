@@ -5,7 +5,7 @@ import { Container } from "./styles";
 const NotFound = () => {
   return (
     <Container>
-      <img alt="not found" src={NotFound404} width="40%"/>
+      <img alt="not found" src={NotFound404}/>
     </Container>
   );
 };

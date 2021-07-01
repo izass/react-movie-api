@@ -94,7 +94,17 @@ function MovieDetails(props) {
         <h2>Trailer</h2>
         <hr></hr>
         <div>
-          <YouTube videoId={movie.videos.results.lenghth > 0 ? movie.videos.results[0].key : ""} />
+          <iframe
+            width="100%"
+            height="100%"
+            src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          >
+            </iframe>
+          {/* <YouTube videoId={movie.videos.results.lenghth > 0 ? movie.videos.results[0].key : ""} /> */}
         </div>
       </TrailerSection>
     </Container>

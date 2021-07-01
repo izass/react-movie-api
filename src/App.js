@@ -13,13 +13,14 @@ import SearchResults from './pages/SearchResults'
 import NavBar from './components/NavBar'
 import NotFound from './components/NotFound'
 
-import './styles.css'
+import GlobalStyle from './globalStyles';
 
 
 function App() {
   const history = useHistory()
   return (
     <Router>
+      <GlobalStyle />
       <Route path="/" component={NavBar}/>
       <Switch history={history}>
         <Route exact path="/" component={Landing}/>
