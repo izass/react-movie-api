@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import YouTube from "react-youtube";
-
 import { getMovieDetails } from "../../services/api";
 import LoadingPage from '../../components/LoadingPage'
 
@@ -96,15 +94,13 @@ function MovieDetails(props) {
         <div>
           <iframe
             width="100%"
-            height="100%"
+            height="360"
             src={`https://www.youtube.com/embed/${movie.videos.results[0].key}`}
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowfullscreen
-          >
-            </iframe>
-          {/* <YouTube videoId={movie.videos.results.lenghth > 0 ? movie.videos.results[0].key : ""} /> */}
+          ></iframe>
         </div>
       </TrailerSection>
     </Container>
