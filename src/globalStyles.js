@@ -1,4 +1,4 @@
-import styled, { createGlobalStyle } from "styled-components"
+import { createGlobalStyle } from "styled-components"
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -9,16 +9,16 @@ const GlobalStyle = createGlobalStyle`
   }
 `;
 
-const size = {
+const breakPoints = {
   mobile: '575px',
   tablet: '991px',
   desktop: '992px'
 }
 
 export const device = {
-  mobile: `(max-width: ${size.mobile})`,
-  tablet: `(min-width: ${size.mobile}) and (max-width: ${size.tablet})`,
-  desktop: `(min-width: ${size.desktop})`,
+  mobile: `(max-width: ${breakPoints.mobile})`,
+  tablet: `(min-width: ${breakPoints.mobile}) and (max-width: ${breakPoints.tablet})`,
+  desktop: `(min-width: ${breakPoints.desktop})`,
 }
 
 export default GlobalStyle

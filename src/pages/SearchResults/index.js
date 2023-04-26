@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import { searchMovies } from "../../services/api";
-import Grid from "../../components/Grid";
+import MoviesGrid from "../../components/MoviesGrid";
 import LoadingPage from "../../components/LoadingPage";
 
 import { Container } from "./styles.js";
@@ -33,7 +33,7 @@ function SearchResults(props) {
 
   return (
     <Container>
-      <Grid list={movies} />
+      <MoviesGrid list={movies} />
     </Container>
   );
 }

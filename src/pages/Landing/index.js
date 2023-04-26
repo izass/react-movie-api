@@ -1,44 +1,43 @@
 import React, { useEffect, useState } from "react";
 
-import Grid from "../../components/Grid";
+import MoviesGrid from "../../components/MoviesGrid";
 import { getMovie } from "../../services/api";
 
-import { Container, HeaderPoster } from "./styles.js";
+import { Container, Hero, Title, GradientContainer } from "./styles.js";
 
-function Landing(props) {
-  const [movies, setMovies] = useState([])
-  const [moviesId, setMoviesId] = useState([
-    105, //"back+to+the+future
-    82695, //"les+misérables"
-    299536, //"avengers+infinity+war"
-    68718, //"django+unchained"
-    27205, //"inception
-    670, //"oldboy"
-  ])
+const moviesId = [
+  105, //"back+to+the+future
+  82695, //"les+misérables"
+  299536, //"avengers+infinity+war"
+  68718, //"django+unchained"
+  27205, //"inception
+  670, //"oldboy"
+];
+
+const Landing = () => {
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    async function fetchData () {
-      let movieList = [];
-      for (var i = 0; i < moviesId.length; i++) {
-        const response = await getMovie(moviesId[i])
-        movieList.push(response);
-      }
+    const fetchData = async () => {
+      const movieList = await Promise.all(
+        moviesId.map(async (id) => await getMovie(id))
+      );
       setMovies(movieList);
     };
 
-    fetchData()
-  }, [moviesId])
+    fetchData();
+  }, []);
 
   return (
     <Container>
-      <HeaderPoster>
-        <div className="gradient">
-          <h1>Landing Page</h1>
-        </div>
-      </HeaderPoster>
-      <Grid list={movies} />
+      <Hero>
+        <GradientContainer>
+          <Title>Movies Search Engine</Title>
+        </GradientContainer>
+      </Hero>
+      <MoviesGrid moviesList={movies} />
     </Container>
-  )
-}
+  );
+};
 
-export default Landing
+export default Landing;

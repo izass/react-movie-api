@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
-import { device } from "../../globalStyles"
-import backgroundImg from "./images/avengers-infinity-war3.jpg"
+import { device } from "../../globalStyles";
+import backgroundImg from "./images/avengers-infinity-war3.jpg";
 
 export const Container = styled.div`
   display: flex;
@@ -14,8 +14,8 @@ export const Container = styled.div`
   @media ${device.desktop} {
     margin: 0 8rem;
   }
-`
-export const HeaderPoster = styled.header`
+`;
+export const Hero = styled.header`
   display: flex;
   justify-content: center;
   align-items: flex-end;
@@ -33,35 +33,39 @@ export const HeaderPoster = styled.header`
   @media ${device.tablet} {
     height: 300px;
   }
+`;
 
-  .gradient {
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
+export const GradientContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
 
-    height: 100%;
-    width: 100%;
-    background: radial-gradient(circle, rgba(255,255,255,.0) 55%, rgba(0,0,0) 70%);
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0) 55%,
+    rgba(0, 0, 0) 70%
+  );
+`;
+
+export const Title = styled.h1`
+  margin-bottom: 4rem;
+
+  font-weight: bold;
+  text-shadow: 0.1em 0.1em 0.2em black;
+  font-size: 5rem;
+  text-transform: uppercase;
+
+  @media ${device.mobile} {
+    margin-bottom: 1rem;
+
+    font-size: 2rem;
   }
 
-  h1 {
-    margin-bottom: 4rem;
+  @media ${device.tablet} {
+    margin-bottom: 1rem;
 
-    font-weight: bold;
-    text-shadow: 0.1em 0.1em 0.2em black;
-    font-size: 5rem;
-    text-transform: uppercase;
-
-    @media ${device.mobile} {
-      margin-bottom: 1rem;
-
-      font-size: 2rem;
-    }
-
-    @media ${device.tablet} {
-      margin-bottom: 1rem;
-
-      font-size: 2rem;
-    }
+    font-size: 2rem;
   }
-`
+`;

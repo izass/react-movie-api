@@ -1,0 +1,11 @@
+= README
+Isaac Moreira Barbosa <izass1312@gmail.com>
+
+A web site to search movies and see details about it. Interface for https://www.themoviedb.org/documentation/api[The Movie DataBase API]
+
+To run this project, open it and type:
+
+----
+  yarn install
+  yarn start
+----
