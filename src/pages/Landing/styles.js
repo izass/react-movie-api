@@ -1,23 +1,15 @@
 import styled from "styled-components";
 
-import { device } from "../../globalStyles";
-import backgroundImg from "./images/avengers-infinity-war3.jpg";
+import backgroundImg from "../../assets/images/avengers-infinity-war3.jpg";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-
-  margin: 0;
-
-  @media ${device.desktop} {
-    margin: 0 8rem;
-  }
+  margin: 0 5rem;
 `;
 export const Hero = styled.header`
   display: flex;
-  justify-content: center;
   align-items: flex-end;
 
   height: 700px;
@@ -25,19 +17,10 @@ export const Hero = styled.header`
 
   background: #000 url(${backgroundImg}) no-repeat center;
   background-size: contain;
-
-  @media ${device.mobile} {
-    height: 200px;
-  }
-
-  @media ${device.tablet} {
-    height: 300px;
-  }
 `;
 
 export const GradientContainer = styled.div`
   display: flex;
-  justify-content: center;
   align-items: flex-end;
 
   height: 100%;
@@ -51,21 +34,13 @@ export const GradientContainer = styled.div`
 
 export const Title = styled.h1`
   margin-bottom: 4rem;
-
   font-weight: bold;
   text-shadow: 0.1em 0.1em 0.2em black;
   font-size: 5rem;
   text-transform: uppercase;
+  text-align: center;
+`;
 
-  @media ${device.mobile} {
-    margin-bottom: 1rem;
-
-    font-size: 2rem;
-  }
-
-  @media ${device.tablet} {
-    margin-bottom: 1rem;
-
-    font-size: 2rem;
-  }
+export const MoviesList = styled.div`
+  margin: 1rem;
 `;

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import MoviesGrid from "../../components/MoviesGrid";
 import { getMovie } from "../../services/api";
 
-import { Container, Hero, Title, GradientContainer } from "./styles.js";
+import { Container, Hero, Title, GradientContainer, MoviesList } from "./styles.js";
 
 const moviesId = [
   105, //"back+to+the+future
@@ -19,9 +19,7 @@ const Landing = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieList = await Promise.all(
-        moviesId.map(async (id) => await getMovie(id))
-      );
+      const movieList = await Promise.all(moviesId.map((id) => getMovie(id)));
       setMovies(movieList);
     };
 
@@ -35,7 +33,9 @@ const Landing = () => {
           <Title>Movies Search Engine</Title>
         </GradientContainer>
       </Hero>
-      <MoviesGrid moviesList={movies} />
+      <MoviesList>
+        <MoviesGrid moviesList={movies} />
+      </MoviesList>
     </Container>
   );
 };

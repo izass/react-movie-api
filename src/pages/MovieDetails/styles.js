@@ -1,12 +1,12 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-import { device } from "../../globalStyles"
+import { device } from "../../globalStyles";
 
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  margin: 0 15rem;
+  margin: 0 10rem;
 
   @media ${device.mobile} {
     margin: 0 1rem;
@@ -17,22 +17,22 @@ export const Container = styled.div`
     margin: 0 2rem;
     font-size: 0.8rem;
   }
+`;
 
-  div:first-of-type {
-    display: flex;
+export const MovieData = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 1rem;
 
-    @media ${device.mobile} {
-      flex-direction: column;
-      align-items: center;
+  @media ${device.mobile} {
+    flex-direction: column;
+    align-items: center;
 
-      width: 100%;
-    }
+    width: 100%;
   }
-`
-export const PosterSection = styled.div`
-  width: 30%;
-  margin: 1.66%;
+`;
 
+export const PosterSection = styled.div`
   @media ${device.mobile} {
     width: 100%;
     margin: 0;
@@ -42,19 +42,12 @@ export const PosterSection = styled.div`
     width: 50%;
     margin: 0 0.5rem 0 0;
   }
-
-  img {
-    width: 100%;
-  }
-`
+`;
 
 export const InfoSection = styled.div`
-  width: 60%;
-  margin: 1.66%;
-
   @media ${device.mobile} {
     width: 100%;
-    margin: 0
+    margin: 0;
   }
 
   @media ${device.tablet} {
@@ -62,9 +55,11 @@ export const InfoSection = styled.div`
     margin: 0;
   }
 
-  h1, h2, h3, p, a {
-    padding: 1rem 0 1rem 1rem;
-
+  h1,
+  h2,
+  h3,
+  p,
+  a {
     @media ${device.mobile} {
       margin-top: 0;
       margin-bottom: 0.5rem;
@@ -79,7 +74,7 @@ export const InfoSection = styled.div`
   a {
     color: aqua;
   }
-`
+`;
 
 export const TrailerSection = styled.div`
   margin: 1rem;
@@ -91,14 +86,11 @@ export const TrailerSection = styled.div`
   @media ${device.tablet} {
     margin-top: -1rem;
   }
+`;
 
-  div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-
-    margin-top: 1rem;
-  }
-`
-
+export const TrailerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+`;

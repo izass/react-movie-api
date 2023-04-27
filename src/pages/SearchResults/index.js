@@ -33,7 +33,7 @@ function SearchResults(props) {
 
   return (
     <Container>
-      <MoviesGrid list={movies} />
+      <MoviesGrid moviesList={movies} />
     </Container>
   );
 }

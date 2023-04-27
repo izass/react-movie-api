@@ -1,26 +1,26 @@
-import React, { useState } from 'react'
+import React, { useState } from "react";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSearch } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
-import { NavContainer, Nav, InputSearch, SearchButton } from './styles.js'
+import { NavContainer, Nav, InputSearch, SearchButton } from "./styles.js";
 
-const NavBar = (props) => {
-  const [search, setSearch] = useState("")
+const NavBar = ({ history }) => {
+  const [search, setSearch] = useState("");
 
-  function handleChange(event) {
+  const handleChange = (event) => {
     setSearch(event.target.value);
-  }
+  };
 
-  function handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
     if (search === "") {
-      return
+      return;
     } else {
-      props.history.push(`/search/${search}`);
+      history.push(`/search/${search}`);
       setSearch("");
     }
-  }
+  };
 
   return (
     <NavContainer>
@@ -32,11 +32,13 @@ const NavBar = (props) => {
           value={search}
           onChange={handleChange}
         />
-        <SearchButton type="submit"><FontAwesomeIcon icon={faSearch} /></SearchButton>
+        <SearchButton type="submit">
+          <FontAwesomeIcon icon={faSearch} />
+        </SearchButton>
       </form>
       <Nav to="/">Filmes</Nav>
     </NavContainer>
-  )
-}
+  );
+};
 
 export default NavBar;
