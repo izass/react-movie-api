@@ -21,6 +21,7 @@ export const Hero = styled.header`
 
 export const GradientContainer = styled.div`
   display: flex;
+  justify-content: center;
   align-items: flex-end;
 
   height: 100%;

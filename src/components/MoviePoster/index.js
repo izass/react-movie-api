@@ -1,13 +1,17 @@
 import React from "react";
 
-import { Container } from "./styles";
+import { Container, PosterImage } from "./styles";
+
+const TMDB_IMAGE_HOST = 'https://image.tmdb.org/t/p/w500'
 
 const MoviesPoster = ({ movie }) => {
   const { id, poster_path: posterPath } = movie;
 
+  const imageLink = `${TMDB_IMAGE_HOST}/${posterPath}`
+
   return (
     <Container to={`/movies/${id}`}>
-      <img src={`https://image.tmdb.org/t/p/w500/${posterPath}`} alt="poster" />
+      <PosterImage src={imageLink} alt="poster" />
     </Container>
   );
 };
