@@ -32,7 +32,7 @@ const NavBar = ({ history }) => {
           value={search}
           onChange={handleChange}
         />
-        <SearchButton type="submit">
+        <SearchButton>
           <FontAwesomeIcon icon={faSearch} />
         </SearchButton>
       </form>

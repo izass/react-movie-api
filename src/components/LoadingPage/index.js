@@ -1,13 +1,13 @@
-import { Container } from './styles'
+import { Container } from "./styles";
 
-import LoadImage from '../../assets/gifs/play_movie_preview.gif'
+import LoadImage from "../../assets/gifs/play_movie_preview.gif";
 
 const LoadingPage = () => {
   return (
     <Container>
-      <img alt="loading" src={LoadImage}/>
+      <img alt="loading" src={LoadImage} />
     </Container>
-  )
-}
+  );
+};
 
-export default LoadingPage
+export { LoadingPage };

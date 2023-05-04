@@ -6,27 +6,29 @@ const api = axios.create({
 
 const API_KEY = "API_KEY;";
 
-async function searchMovies(query) {
+const searchMovies = async ({ param, page }) => {
+  const pageNumber = page || 1;
+
   try {
     const response = await api.get(
-      `search/movie?api_key=${API_KEY}&language=en-US&page=1&include_adult=false&query=${query}`
+      `search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${param}&page=${pageNumber}`
     );
-    return response.data.results;
+    return response.data;
   } catch (error) {
     return error;
   }
-}
+};
 
-async function getMovie(id) {
+const getMovie = async (id) => {
   try {
     const response = await api.get(`movie/${id}?api_key=${API_KEY}`);
     return response.data;
   } catch (error) {
     return error;
   }
-}
+};
 
-async function getMovieDetails(id) {
+const getMovieDetails = async (id) => {
   try {
     const response = await api.get(
       `movie/${id}?api_key=${API_KEY}&append_to_response=videos,credits`
@@ -35,6 +37,6 @@ async function getMovieDetails(id) {
   } catch (error) {
     return error;
   }
-}
+};
 
 export { searchMovies, getMovie, getMovieDetails };

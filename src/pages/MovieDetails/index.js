@@ -1,116 +1,51 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-import { getMovieDetails } from "../../services/api";
-import LoadingPage from "../../components/LoadingPage";
+import { LoadingPage } from "../../components/LoadingPage";
+import { TrailerSection } from "./compose/TrailerSection";
+import { Poster } from "./compose/Poster";
 
-import {
-  Container,
-  PosterSection,
-  InfoSection,
-  TrailerSection,
-  MovieData,
-  TrailerContainer,
-} from "./styles.js";
+import { Container, MovieData } from "./styles.js";
+import { InfoSection } from "./compose/InfoSection";
+import { useMovieDetails } from "../../hooks/useMovieDetails";
 
-const MovieDetails = (props) => {
-  const [movie, setMovie] = useState({});
-  const [loading, setLoading] = useState(true);
+const MovieDetails = () => {
+  const { id } = useParams();
+  const { isLoading, hasError, movie } = useMovieDetails(id);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const { id } = props.match.params;
-      try {
-        const response = await getMovieDetails(id);
-        setMovie(response);
-        setLoading(false);
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
-    };
+  const {
+    title,
+    runtime,
+    overview,
+    imdbId,
+    posterPath,
+    releasedYear,
+    genre,
+    cast,
+    direction,
+    videoId,
+  } = movie;
 
-    fetchData();
-  }, [props.match.params]);
-
-  if (loading) {
+  if (isLoading) {
     return <LoadingPage />;
   }
-  const { title, runtime, overview, imdb_id: imdbId } = movie;
-  const releasedYear = movie.release_date.substring(0, 4);
-  const genres = movie.genres
-    .map((genre) => {
-      return genre.name;
-    })
-    .join(", ");
-
-  const cast = movie.credits.cast
-    .slice(0, 5)
-    .map((item) => {
-      return item.name;
-    })
-    .join(", ");
-
-  const getDirection = () => {
-    const direction = movie.credits.crew.filter(
-      (item) => item.department === "Directing" && item.job === "Director"
-    );
-
-    return direction
-      .map((director) => {
-        return director.name;
-      })
-      .join(", ");
-  };
-
-  const videoId = movie.videos.results.find(
-    (video) => video.type === "Trailer"
-  ).key;
 
   return (
     <Container>
       <MovieData>
-        <PosterSection>
-          <img
-            alt="poster"
-            src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-          />
-        </PosterSection>
-        <InfoSection>
-          <h1>{title}</h1>
-          <h3>
-            {releasedYear} Dirigido por {getDirection()}
-          </h3>
-          <p>{overview}</p>
-          <h3>Elenco</h3>
-          <p>{cast}.</p>
-          <h3>Genero</h3>
-          <p>{genres}</p>
-          <p>{runtime} min</p>
-          <h3>Mais informações</h3>
-          <a
-            href={`https://www.imdb.com/title/${imdbId}`}
-            target="_blank"
-            rel="noreferrer"
-          >
-            https://www.imdb.com/title/{imdbId}
-          </a>
-        </InfoSection>
+        <Poster path={posterPath} />
+        <InfoSection
+          title={title}
+          releasedYear={releasedYear}
+          overview={overview}
+          cast={cast}
+          genres={genre}
+          runtime={runtime}
+          direction={direction}
+          imdbId={imdbId}
+        />
       </MovieData>
-      <TrailerSection>
-        <h2>Trailer</h2>
-        <hr></hr>
-        <TrailerContainer>
-          <iframe
-            width="100%"
-            height="360"
-            src={`https://www.youtube.com/embed/${videoId}`}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </TrailerContainer>
-      </TrailerSection>
+      <TrailerSection id={videoId} />
     </Container>
   );
 };

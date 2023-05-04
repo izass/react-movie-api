@@ -17,7 +17,7 @@ import GlobalStyle from "./globalStyles";
 
 function App() {
   const history = useHistory();
-  
+
   return (
     <Router>
       <GlobalStyle />
@@ -25,7 +25,7 @@ function App() {
       <Switch history={history}>
         <Route exact path="/" component={Landing} />
         <Route path="/movies/:id" component={MovieDetails} />
-        <Route path="/search/:query" component={SearchResults} />
+        <Route path="/search/:param" component={SearchResults} />
         <Route path="*" component={NotFound} />
       </Switch>
     </Router>

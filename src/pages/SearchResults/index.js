@@ -1,41 +1,33 @@
-import React, { useEffect, useState } from "react";
-
-import { searchMovies } from "../../services/api";
 import MoviesGrid from "../../components/MoviesGrid";
-import LoadingPage from "../../components/LoadingPage";
+import { LoadingPage } from "../../components/LoadingPage";
 
 import { Container } from "./styles.js";
+import { useMovieSearch } from "../../hooks/useMovieSearch";
+import { Pagination } from "../../components/Pagination";
 
-function SearchResults(props) {
-  const [movies, setMovies] = useState([])
-  const [loading, setLoading] = useState(false)
+const SearchResults = () => {
+  const {
+    isLoading,
+    movies,
+    amount,
+    currentPage,
+    totalPages,
+  } = useMovieSearch();
 
-  useEffect(() => {
-    async function fetchData() {
-      const { query } = props.match.params;
-      try {
-        setLoading(true)
-        const response = await searchMovies(query);
-        setMovies(response);
-        setLoading(false)
-      } catch (error) {
-        console.log(error)
-        setLoading(false)
-      }
-    };
-
-    fetchData()
-  }, [props.match.params])
-
-  if (loading) {
-    return <LoadingPage />
+  if (isLoading) {
+    return <LoadingPage />;
   }
 
   return (
     <Container>
+      <div>{amount} resultados</div>
       <MoviesGrid moviesList={movies} />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
     </Container>
   );
-}
+};
 
-export default SearchResults
+export default SearchResults;
