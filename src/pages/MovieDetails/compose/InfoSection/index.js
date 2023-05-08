@@ -1,7 +1,6 @@
 import React from "react";
 import { Container } from "./styles";
-
-const IMDB_PATH = "https://www.imdb.com/title";
+import { IMDB_PATH_HOST } from "../../../../constants/externalDataHosts";
 
 const InfoSection = ({
   title,
@@ -13,7 +12,7 @@ const InfoSection = ({
   direction,
   imdbId
 }) => {
-  const imdbSrc = `${IMDB_PATH}/${imdbId}`
+  const imdbSrc = `${IMDB_PATH_HOST}/${imdbId}`
 
   return (
     <Container>

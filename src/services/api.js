@@ -1,18 +1,26 @@
 import axios from "axios";
 
-const api = axios.create({
-  baseURL: "https://api.themoviedb.org/3/",
-});
-
 const API_KEY = process.env.REACT_APP_API_KEY;
 
-const searchMovies = async ({ param, page }) => {
+const api = axios.create({
+  baseURL: "https://api.themoviedb.org/3/",
+  params: {
+    api_key: API_KEY,
+  },
+});
+
+const searchMovies = async ({ search, page }) => {
   const pageNumber = page || 1;
 
+  const params = {
+    query: search,
+    page: pageNumber,
+  };
+
   try {
-    const response = await api.get(
-      `search/movie?include_adult=false&api_key=${API_KEY}&query=${param}&page=${pageNumber}`
-    );
+    const response = await api.get("search/movie", {
+      params,
+    });
     return response.data;
   } catch (error) {
     return error;
@@ -21,7 +29,7 @@ const searchMovies = async ({ param, page }) => {
 
 const getMovie = async (id) => {
   try {
-    const response = await api.get(`movie/${id}?api_key=${API_KEY}`);
+    const response = await api.get(`movie/${id}`);
     return response.data;
   } catch (error) {
     return error;
@@ -29,10 +37,12 @@ const getMovie = async (id) => {
 };
 
 const getMovieDetails = async (id) => {
+  const params = {
+    append_to_response: "videos,credits",
+  };
+
   try {
-    const response = await api.get(
-      `movie/${id}?api_key=${API_KEY}&append_to_response=videos,credits`
-    );
+    const response = await api.get(`movie/${id}`, { params });
     return response.data;
   } catch (error) {
     return error;

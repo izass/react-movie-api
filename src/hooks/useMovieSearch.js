@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { searchMovies } from "../services/api";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { useQuery } from "./useQuery";
+import { useNavigation } from "./useNavigation";
 
 const useMovieSearch = () => {
+  const { pageNumber, param } = useNavigation();
   const [movies, setMovies] = useState([]);
   const [totalPages, setTotalPages] = useState(null);
   const [amount, setAmount] = useState(null);
@@ -11,18 +11,14 @@ const useMovieSearch = () => {
   const [isLoading, setLoading] = useState(false);
   const [hasError, setError] = useState(null);
 
-  const { param } = useParams();
-  const query = useQuery();
-  const pageNumber = query.get("page");
-
   useEffect(() => {
-    async function fetchData() {
+    const fetchData = async () => {
       try {
         setLoading(true);
         const { results, page, total_pages, total_results } =
-          await searchMovies({ param, page: pageNumber });
+          await searchMovies({ search: param, page: pageNumber });
 
-        setMovies(results.slice(0, 9));
+        setMovies(results);
         setAmount(total_results);
         setTotalPages(total_pages);
         setCurrentPage(page);
@@ -32,7 +28,7 @@ const useMovieSearch = () => {
       } finally {
         setLoading(false);
       }
-    }
+    };
 
     fetchData();
   }, [param, pageNumber]);

@@ -7,7 +7,7 @@ const MoviesGrid = ({ moviesList }) => {
   return (
     <Container>
       {moviesList.map((movie) => (
-        <MoviesPoster movie={movie} />
+        <MoviesPoster key={movie.id} movie={movie} />
       ))}
     </Container>
   );

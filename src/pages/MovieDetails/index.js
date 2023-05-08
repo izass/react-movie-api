@@ -11,7 +11,7 @@ import { useMovieDetails } from "../../hooks/useMovieDetails";
 
 const MovieDetails = () => {
   const { id } = useParams();
-  const { isLoading, hasError, movie } = useMovieDetails(id);
+  const { isLoading, movie } = useMovieDetails(id);
 
   const {
     title,

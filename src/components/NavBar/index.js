@@ -4,8 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 import { NavContainer, Nav, InputSearch, SearchButton } from "./styles.js";
+import { useNavigation } from "../../hooks/useNavigation.js";
 
-const NavBar = ({ history }) => {
+const NavBar = () => {
+  const { goToSearchPage } = useNavigation();
   const [search, setSearch] = useState("");
 
   const handleChange = (event) => {
@@ -17,7 +19,7 @@ const NavBar = ({ history }) => {
     if (search === "") {
       return;
     } else {
-      history.push(`/search/${search}`);
+      goToSearchPage({ search });
       setSearch("");
     }
   };

@@ -1,17 +1,14 @@
 import React from "react";
-import { Container } from "./styles";
+import { Container, Image } from "./styles";
 
-const TMDB_IMAGE_HOST = "https://image.tmdb.org/t/p/w500";
+import { TMDB_IMAGE_HOST } from "../../../../constants/externalDataHosts";
 
 const Poster = ({ path }) => {
   const imageLink = `${TMDB_IMAGE_HOST}/${path}`;
 
   return (
     <Container>
-      <img
-        alt="poster"
-        src={imageLink}
-      />
+      <Image alt="poster" src={imageLink} />
     </Container>
   );
 };

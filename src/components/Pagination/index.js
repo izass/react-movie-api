@@ -1,34 +1,39 @@
-import {
-  useHistory,
-  useParams,
-} from "react-router-dom/cjs/react-router-dom.min";
+import { usePagination } from "../../hooks/usePagination";
+import { BackSection } from "./compose/BackSection";
+import { NextSection } from "./compose/NextSection";
+import { PagesDisplacer } from "./compose/PagesDisplacer";
 import { Container } from "./styles";
 
 const Pagination = ({ currentPage, totalPages }) => {
-  const { param } = useParams();
-  const history = useHistory();
-
-  const goToPreviousPage = () => {
-    const pageNumber = currentPage - 1;
-    history.push(`/search/${param}?page=${pageNumber}`);
-  };
-
-  const goToNextPage = () => {
-    const pageNumber = currentPage + 1;
-    history.push(`/search/${param}?page=${pageNumber}`);
-  };
+  const {
+    goToFirstPage,
+    goToLastPage,
+    goToPreviousPage,
+    goToNextPage,
+    goToSearchPage,
+    pages,
+    isInitialPage,
+    isLastPage,
+  } = usePagination(totalPages, currentPage);
 
   return (
     <Container>
-      <div>
-        <button onClick={goToPreviousPage} disabled={currentPage === 1}>
-          {"<"} Back
-        </button>
-      </div>
-      <div>{currentPage}</div>
-      <div>
-        <button onClick={goToNextPage}>Next {">"}</button>
-      </div>
+      <BackSection
+        goToPreviousPage={goToPreviousPage}
+        goToFirstPage={goToFirstPage}
+        isInitialPage={isInitialPage}
+      />
+      <PagesDisplacer
+        pages={pages}
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToSearchPage={goToSearchPage}
+      />
+      <NextSection
+        goToNextPage={goToNextPage}
+        goToLastPage={goToLastPage}
+        isLastPage={isLastPage}
+      />
     </Container>
   );
 };
