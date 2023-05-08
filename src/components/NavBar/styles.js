@@ -1,6 +1,6 @@
-import styled from 'styled-components'
+import styled, { css } from "styled-components";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 export const NavContainer = styled.header`
   display: flex;
@@ -9,16 +9,20 @@ export const NavContainer = styled.header`
 
   padding: 1rem 0;
 
-  background: #000;
-  color: #fff;
+  ${({ theme }) => css`
+    background: ${theme.colors.black};
+    color: ${theme.colors.white};
+  `}
   font-size: 1.3rem;
   font-weight: bold;
-`
+`;
 
 export const Nav = styled(Link)`
   text-decoration: none;
-  color: #fff;
-`
+  ${({ theme }) => css`
+    color: ${theme.colors.white};
+  `}
+`;
 
 export const InputSearch = styled.input`
   border-top-left-radius: 1rem;
@@ -26,19 +30,15 @@ export const InputSearch = styled.input`
   border: none;
   padding: 0.6rem;
   width: 15rem;
-`
+`;
 
 export const SearchButton = styled.button`
   border-top-right-radius: 1rem;
   border-bottom-right-radius: 1rem;
   border: none;
   padding: 0.6rem;
-  background: #fff;
+  ${({ theme }) => css`
+    background: ${theme.colors.white};
+  `}
   cursor: pointer;
-`
-
-
-
-
-
-
+`;

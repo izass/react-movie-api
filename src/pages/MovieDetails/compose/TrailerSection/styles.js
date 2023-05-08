@@ -9,4 +9,8 @@ export const IframeContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin-top: 1rem;
+
+  iframe {
+    border: 0;
+  }
 `;

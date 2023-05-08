@@ -1,8 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Container = styled.div`
   a {
-    color: aqua;
+    ${({ theme }) => css`
+      color: ${theme.colors.aquaBlue};
+    `};
   }
 `;
-
