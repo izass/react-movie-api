@@ -4,14 +4,14 @@ const api = axios.create({
   baseURL: "https://api.themoviedb.org/3/",
 });
 
-const API_KEY = "API_KEY;";
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const searchMovies = async ({ param, page }) => {
   const pageNumber = page || 1;
 
   try {
     const response = await api.get(
-      `search/movie?api_key=${API_KEY}&language=en-US&include_adult=false&query=${param}&page=${pageNumber}`
+      `search/movie?include_adult=false&api_key=${API_KEY}&query=${param}&page=${pageNumber}`
     );
     return response.data;
   } catch (error) {
