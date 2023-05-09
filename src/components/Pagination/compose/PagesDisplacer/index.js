@@ -8,7 +8,7 @@ const PagesDisplacer = ({ currentPage, pages }) => {
       {pages?.map(({ id, number, anchor }) => (
         <PageCell
           key={id}
-          onClick={anchor}
+          anchor={anchor}
           number={number}
           currentPage={currentPage}
         />

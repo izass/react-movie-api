@@ -1,6 +1,6 @@
 import React from "react";
 
-import MoviesPoster from "../MoviePoster";
+import { MoviesPoster } from "../MoviePoster";
 import { Container } from "./styles";
 
 const MoviesGrid = ({ moviesList }) => {
@@ -13,4 +13,4 @@ const MoviesGrid = ({ moviesList }) => {
   );
 };
 
-export default MoviesGrid;
+export { MoviesGrid };

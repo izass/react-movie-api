@@ -1,25 +1,23 @@
 import React, { useEffect, useState } from "react";
 
-import MoviesGrid from "../../components/MoviesGrid";
+import { MoviesGrid } from "../../components/MoviesGrid";
 import { getMovie } from "../../services/api";
+import { MOVIES_ID } from "../../constants/movies-id";
 
-import { Container, Hero, Title, GradientContainer, MoviesList } from "./styles.js";
-
-const moviesId = [
-  105, //"back+to+the+future
-  82695, //"les+misérables"
-  299536, //"avengers+infinity+war"
-  68718, //"django+unchained"
-  27205, //"inception
-  670, //"oldboy"
-];
+import {
+  Container,
+  Hero,
+  Title,
+  GradientContainer,
+  MoviesList,
+} from "./styles.js";
 
 const Landing = () => {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      const movieList = await Promise.all(moviesId.map((id) => getMovie(id)));
+      const movieList = await Promise.all(MOVIES_ID.map((id) => getMovie(id)));
       setMovies(movieList);
     };
 
@@ -40,4 +38,4 @@ const Landing = () => {
   );
 };
 
-export default Landing;
+export { Landing };

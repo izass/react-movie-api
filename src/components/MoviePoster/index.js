@@ -1,8 +1,7 @@
 import React from "react";
 
+import { TMDB_IMAGE_HOST } from "../../constants/external-data-hosts";
 import { Container, PosterImage } from "./styles";
-
-const TMDB_IMAGE_HOST = "https://image.tmdb.org/t/p/w500";
 
 const MoviesPoster = ({ movie }) => {
   const { id, poster_path: posterPath, title } = movie;
@@ -16,4 +15,4 @@ const MoviesPoster = ({ movie }) => {
   );
 };
 
-export default MoviesPoster;
+export { MoviesPoster };

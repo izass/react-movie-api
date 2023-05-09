@@ -1,4 +1,4 @@
-import MoviesGrid from "../../components/MoviesGrid";
+import { MoviesGrid } from "../../components/MoviesGrid";
 import { LoadingPage } from "../../components/LoadingPage";
 
 import { Container } from "./styles.js";
@@ -6,13 +6,8 @@ import { useMovieSearch } from "../../hooks/useMovieSearch";
 import { Pagination } from "../../components/Pagination";
 
 const SearchResults = () => {
-  const {
-    isLoading,
-    movies,
-    amount,
-    currentPage,
-    totalPages,
-  } = useMovieSearch();
+  const { isLoading, movies, amount, currentPage, totalPages } =
+    useMovieSearch();
 
   if (isLoading) {
     return <LoadingPage />;
@@ -22,12 +17,9 @@ const SearchResults = () => {
     <Container>
       <div>{amount} resultados</div>
       <MoviesGrid moviesList={movies} />
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-      />
+      <Pagination currentPage={currentPage} totalPages={totalPages} />
     </Container>
   );
 };
 
-export default SearchResults;
+export { SearchResults };

@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, IframeContainer } from "./styles";
-import { YOUTUBE_EMBED_HOST } from "../../../../constants/externalDataHosts";
+import { YOUTUBE_EMBED_HOST } from "../../../../constants/external-data-hosts";
 
 const TrailerSection = ({ id }) => {
   const videoSrc = `${YOUTUBE_EMBED_HOST}/${id}`;

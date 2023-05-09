@@ -1,14 +1,10 @@
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-} from "react-router-dom";
-import NavBar from "../NavBar";
-import Landing from "../../pages/Landing";
-import MovieDetails from "../../pages/MovieDetails";
-import SearchResults from "../../pages/SearchResults";
-import NotFound from "../NotFound";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { NavBar } from "../NavBar";
+import { Landing } from "../../pages/Landing";
+import { MovieDetails } from "../../pages/MovieDetails";
+import { SearchResults } from "../../pages/SearchResults";
+import { NotFound } from "../NotFound";
 
 const Navigator = () => {
   return (

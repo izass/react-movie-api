@@ -1,6 +1,6 @@
 import React from "react";
 import { Container } from "./styles";
-import { IMDB_PATH_HOST } from "../../../../constants/externalDataHosts";
+import { IMDB_PATH_HOST } from "../../../../constants/external-data-hosts";
 
 const InfoSection = ({
   title,
